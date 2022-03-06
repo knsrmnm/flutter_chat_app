@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_app/screen/chat_screen.dart';
 import 'package:line_icons/line_icons.dart';
 
 /// Home screen.
@@ -75,15 +76,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     const SizedBox(height: 30.0),
-                    _makeMessageEl("assets/images/avatar6.png", "Connor Haris", "2m", size.width),
+                    _makeMessageEl("assets/images/avatar6.png", "Connor Haris", "2m", size.width, context),
                     const SizedBox(height: 30.0),
-                    _makeMessageEl("assets/images/avatar7.png", "Ethan Grant", "8m", size.width),
+                    _makeMessageEl("assets/images/avatar7.png", "Ethan Grant", "8m", size.width, context),
                     const SizedBox(height: 30.0),
-                    _makeMessageEl("assets/images/avatar8.png", "Becky Walker", "1h", size.width),
+                    _makeMessageEl("assets/images/avatar8.png", "Becky Walker", "1h", size.width, context),
                     const SizedBox(height: 30.0),
-                    _makeMessageEl("assets/images/avatar2.png", "Paul Sutton", "2h", size.width),
+                    _makeMessageEl("assets/images/avatar2.png", "Paul Sutton", "2h", size.width, context),
                     const SizedBox(height: 30.0),
-                    _makeMessageEl("assets/images/avatar3.png", "Liam Thomas", "2h", size.width),
+                    _makeMessageEl("assets/images/avatar3.png", "Liam Thomas", "2h", size.width, context),
                   ],
                 ),
               ),
@@ -116,48 +117,56 @@ Widget _makeAvatar(String img, String name) {
   );
 }
 
-Widget _makeMessageEl(String img, String name, String time, double width) {
+Widget _makeMessageEl(String img, String name, String time, double width, dynamic context) {
   double _total = width-60.0;
   double _center = _total*0.7;
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      ClipRRect(
-        borderRadius: BorderRadius.circular(50.0),
-        child: Image.asset(img, width: 50.0),
-      ),
-      Container(
-        width: _center,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              name,
-              style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w700
-              ),
-            ),
-            const SizedBox(height: 5.0),
-            Text(
-              "message overview is here.message overview is here.",
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                  fontSize: 12.0,
-                  color: Colors.grey
-              ),
-            ),
-          ],
+  return GestureDetector(
+    onTap: (){
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ChatScreen()),
+      );
+    },
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(50.0),
+          child: Image.asset(img, width: 50.0),
         ),
-      ),
-      Text(
-        time,
-        style: TextStyle(
-          fontSize: 12.0,
-          color: Colors.grey
+        Container(
+          width: _center,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                name,
+                style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w700
+                ),
+              ),
+              const SizedBox(height: 5.0),
+              Text(
+                "message overview is here.message overview is here.",
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                    fontSize: 12.0,
+                    color: Colors.grey
+                ),
+              ),
+            ],
+          ),
         ),
-      )
-    ],
+        Text(
+          time,
+          style: TextStyle(
+              fontSize: 12.0,
+              color: Colors.grey
+          ),
+        )
+      ],
+    ),
   );
 }
