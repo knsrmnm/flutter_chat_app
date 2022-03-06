@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+<img width="200" alt="screenshot" src="/assets/screenshot/chat1.png"> <img width="200" alt="screenshot" src="/assets/screenshot/chat2.png">
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
