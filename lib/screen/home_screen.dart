@@ -9,57 +9,45 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  final Color _accentColor = Color(0xFF272727);
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xff6a85e5),
+        child: Icon(LineIcons.plus, color: Colors.white),
+        onPressed: (){},
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 100.0),
+            const SizedBox(height: 80.0),
             Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Friends',
+                      'Messages',
                       style: TextStyle(
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.white
+                          fontSize: 23.0,
+                          fontWeight: FontWeight.w700,
+                          color: _accentColor
                       ),
                     ),
-                    Icon(LineIcons.plusCircle, color: Colors.white)
+                    Icon(LineIcons.search, color: _accentColor)
                   ],
                 )
             ),
             const SizedBox(height: 30.0),
-            Padding(
-              padding: EdgeInsets.only(left: 30.0),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    _makeAvatar("assets/images/avatar1.png", "Amir"),
-                    const SizedBox(width: 30.0),
-                    _makeAvatar("assets/images/avatar2.png", "Paul"),
-                    const SizedBox(width: 30.0),
-                    _makeAvatar("assets/images/avatar3.png", "Liam"),
-                    const SizedBox(width: 30.0),
-                    _makeAvatar("assets/images/avatar4.png", "Liz"),
-                    const SizedBox(width: 30.0),
-                    _makeAvatar("assets/images/avatar5.png", "Kerry"),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 50.0),
             Container(
               width: size.width,
               height: 800,
               decoration: BoxDecoration(
-                color: Colors.grey[100],
+                color: Colors.white,
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0)),
               ),
               child: Padding(
@@ -148,7 +136,7 @@ Widget _makeMessageEl(String img, String name, String time, double width, dynami
               ),
               const SizedBox(height: 5.0),
               Text(
-                "message overview is here.message overview is here.",
+                "recent message is here. recent message is here.",
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(

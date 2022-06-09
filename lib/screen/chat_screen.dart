@@ -85,7 +85,7 @@ class _ChatScreenState extends State<ChatScreen> {
         backgroundColor: Colors.white,
         leading: GestureDetector(
           onTap: (){Navigator.pop(context);},
-          child: Icon(Icons.arrow_back, color: Colors.white),
+          child: Icon(Icons.arrow_back, color: Colors.black),
         ),
         elevation: 0,
       ),
